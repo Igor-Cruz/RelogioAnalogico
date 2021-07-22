@@ -12,14 +12,19 @@ function updateClock() {
   digitalElement.innerHTML = `${fixZero(hour)}: ${fixZero(minute)}:${fixZero(
     second
   )}`
+
+  let sDeg = (360 / 60) * second - 90
+
+  sElement.style.transform = `rotate(${sDeg}deg)`
 }
 
 function fixZero(time) {
-  if (time < 10) {
+  return time < 10 ? `0${time}` : time
+  /*if (time < 10) {
     return '0' + time
   } else {
     return time
-  }
+  }*/
 }
 
 setInterval(updateClock, 1000)
